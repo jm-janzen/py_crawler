@@ -1,0 +1,6 @@
+
+# Ignore driver log file
+geckodriver.log
+
+# Ignore local driver binary dir
+webdriver/

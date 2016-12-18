@@ -39,9 +39,9 @@ def main():
 
     navigate(driver, "http://www.jmjanzen.com")
 
-    html_id_list = get_elements(driver, attribute)
-    for id in html_id_list:
-        print(id.get_attribute(attribute))
+    attr_list = get_elements(driver, attribute)
+    for attr in attr_list:
+        print(attr.get_attribute(attribute))
 
     driver.quit()
 
