@@ -23,8 +23,11 @@ def init_driver():
     return driver
 
 def navigate(driver, url):
-    """ Using giver webdriver, navigate to given URL """
-    driver.get(url)
+    """ Using given webdriver, navigate to given URL """
+    try:
+        driver.get(url)
+    except SeleniumExceptions.WebDriverException as e:
+        print(type(e).__name__, e)
 
 def get_elements(driver, attribute):
     """ Returns a list of names of all instances of the given attribute """
@@ -36,20 +39,32 @@ def parse_arguments():
     and exits.
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument("url"
+        , help="A url to query for the given attribute (leading schema optional)")
     parser.add_argument("attribute"
         , help="A type of attribute to look for (eg: `id' or `class')")
-    return parser.parse_args()
+
+    args = parser.parse_args()
+
+    return parse_url(args.url), args.attribute
+
+def parse_url(url):
+    if not url.startswith("http://"):
+        url = "http://" + url
+
+    return url
+
 
 def main():
 
-    attribute = parse_arguments().attribute
+    url, attribute = parse_arguments()
 
     # Use X Virtual Frame Buffer (headless display),
     # used as context manager for driver.
     with VirtualDisplay():
         driver = init_driver()
 
-        navigate(driver, "http://www.jmjanzen.com")
+        navigate(driver, url)
 
         # Retrieve and print results
         attr_list = get_elements(driver, attribute)

@@ -29,6 +29,6 @@ export PATH="$PATH:/path/to/geckodriver/dir"
 
 ### Running
 ```bash
-python crawler.py <ATTR>  # Some HTML attribute to search for
+python crawler.py <URL> <ATTR>  # Some HTML attribute to search for
 ```
 
