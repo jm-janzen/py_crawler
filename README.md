@@ -1,7 +1,7 @@
 # Simple CLI Python Webcrawler example
 
 ## Package Requirements
-`Python-v3.5.2`, `Geckodriver-v0.11.1-linux64`
+`Python-v3.5.2`, `Geckodriver-v0.11.1-linux64 (for browser)`, `xorg-server 1.18.4 (for Xvfb virtual display)`
 
 ## Python Module Requirements
 `Selenium-v3.0.2`, `Xvfbwrapper-0.2.8`
